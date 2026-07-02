@@ -1,44 +1,76 @@
-print("Step 1: Starting app")
-
 import gradio as gr
-print("Step 2: Gradio imported")
-
 from calculator import calculate_system
-print("Step 3: Calculator imported")
+from appliances import APPLIANCES
 
-def solar_calculator(daily_energy, sun_hours, battery_voltage, backup_days):
+print("Step 1: All modules imported successfully")
+
+
+def solar_calculator(
+    led_qty, led_hours,
+    fan_qty, fan_hours,
+    tv_qty, tv_hours,
+    fridge_qty, fridge_hours,
+    laptop_qty, laptop_hours
+):
+    # Calculate daily energy consumption
+    daily_energy = (
+        led_qty * APPLIANCES["LED Bulb"] * led_hours +
+        fan_qty * APPLIANCES["Standing Fan"] * fan_hours +
+        tv_qty * APPLIANCES['LED TV 32"'] * tv_hours +
+        fridge_qty * APPLIANCES["Refrigerator"] * fridge_hours +
+        laptop_qty * APPLIANCES["Laptop"] * laptop_hours
+    )
+
+    # Calculate solar system size
     result = calculate_system(
         daily_energy,
-        sun_hours,
-        battery_voltage,
-        backup_days
+        5,   # Peak Sun Hours
+        24,  # Battery Voltage
+        1    # Backup Days
     )
 
     return f"""
-# SolarMate AI
+# ☀️ SolarMate AI Version 2
 
-Solar Panel: {result['panel']} W
+## Appliance Load Summary
 
-Battery: {result['battery']} Ah
+**Daily Energy Consumption:** {daily_energy:.0f} Wh/day
 
-Inverter: {result['inverter']} W
+## Recommended Solar System
+
+☀️ Solar Panel Size: **{result['panel']} W**
+
+🔋 Battery Capacity: **{result['battery']} Ah**
+
+⚡ Inverter Size: **{result['inverter']} W**
 """
 
-print("Step 4: Creating interface")
+
+print("Step 2: Creating Gradio Interface...")
 
 demo = gr.Interface(
     fn=solar_calculator,
     inputs=[
-        gr.Number(label="Daily Energy"),
-        gr.Number(label="Sun Hours"),
-        gr.Number(label="Battery Voltage"),
-        gr.Number(label="Backup Days"),
+        gr.Number(label="LED Bulbs (Quantity)", value=0),
+        gr.Number(label="LED Bulbs (Hours per Day)", value=0),
+
+        gr.Number(label="Standing Fans (Quantity)", value=0),
+        gr.Number(label="Standing Fans (Hours per Day)", value=0),
+
+        gr.Number(label='32" LED TV (Quantity)', value=0),
+        gr.Number(label='32" LED TV (Hours per Day)', value=0),
+
+        gr.Number(label="Refrigerator (Quantity)", value=0),
+        gr.Number(label="Refrigerator (Hours per Day)", value=0),
+
+        gr.Number(label="Laptop (Quantity)", value=0),
+        gr.Number(label="Laptop (Hours per Day)", value=0),
     ],
     outputs="markdown",
+    title="☀️ SolarMate AI Version 2",
+    description="Smart Appliance-Based Solar System Calculator",
 )
 
-print("Step 5: Launching")
+print("Step 3: Launching Gradio...")
 
 demo.launch()
-
-
