@@ -1,41 +1,44 @@
 import gradio as gr
-from calculator import calculate_system
+
 from appliances import APPLIANCES
+from calculator import calculate_system
 
 
-def solar_calculator(
-    led_qty, led_hours,
-    fan_qty, fan_hours,
-    tv_qty, tv_hours,
-    fridge_qty, fridge_hours,
-    laptop_qty, laptop_hours
-):
+def solar_calculator(appliance, quantity, hours):
 
-    daily_energy = (
-        led_qty * APPLIANCES["LED Bulb"] * led_hours +
-        fan_qty * APPLIANCES["Standing Fan"] * fan_hours +
-        tv_qty * APPLIANCES['LED TV 32"'] * tv_hours +
-        fridge_qty * APPLIANCES["Refrigerator"] * fridge_hours +
-        laptop_qty * APPLIANCES["Laptop"] * laptop_hours
-    )
+    power = APPLIANCES[appliance]
+
+    daily_energy = power * quantity * hours
 
     result = calculate_system(
         daily_energy,
-        5,
-        24,
-        1
+        5,      # Peak Sun Hours
+        24,     # Battery Voltage
+        1       # Backup Days
     )
 
     return f"""
-# ☀️ SolarMate AI Version 3
+# ☀️ SolarMate AI Version 4
 
-## Appliance Load Summary
+## Appliance Selected
 
-**Daily Energy:** {daily_energy:.0f} Wh/day
+**{appliance}**
+
+Power Rating: **{power} W**
+
+Quantity: **{quantity}**
+
+Hours per Day: **{hours}**
 
 ---
 
-### Recommended Solar System
+## Daily Energy Consumption
+
+**{daily_energy:.0f} Wh/day**
+
+---
+
+## Recommended Solar System
 
 ☀️ Solar Panel: **{result['panel']} W**
 
@@ -45,44 +48,37 @@ def solar_calculator(
 """
 
 
-with gr.Blocks(title="SolarMate AI") as demo:
+with gr.Blocks(title="SolarMate AI Version 4") as demo:
 
     gr.Markdown("# ☀️ SolarMate AI")
-    gr.Markdown("### Smart Solar PV Sizing Assistant")
+    gr.Markdown("## Dynamic Appliance Selector")
 
-    with gr.Row():
+    appliance = gr.Dropdown(
+        choices=sorted(APPLIANCES.keys()),
+        label="Select Appliance",
+        value="LED Bulb"
+    )
 
-        with gr.Column():
+    quantity = gr.Number(
+        label="Quantity",
+        value=1
+    )
 
-            led_qty = gr.Number(label="LED Bulbs (Qty)", value=0)
-            led_hours = gr.Number(label="LED Bulbs (Hours)", value=0)
+    hours = gr.Number(
+        label="Hours per Day",
+        value=5
+    )
 
-            fan_qty = gr.Number(label="Standing Fans (Qty)", value=0)
-            fan_hours = gr.Number(label="Standing Fans (Hours)", value=0)
+    output = gr.Markdown()
 
-            tv_qty = gr.Number(label='32" LED TV (Qty)', value=0)
-            tv_hours = gr.Number(label='32" LED TV (Hours)', value=0)
+    calculate_button = gr.Button("Calculate Solar System")
 
-            fridge_qty = gr.Number(label="Refrigerator (Qty)", value=0)
-            fridge_hours = gr.Number(label="Refrigerator (Hours)", value=0)
-
-            laptop_qty = gr.Number(label="Laptop (Qty)", value=0)
-            laptop_hours = gr.Number(label="Laptop (Hours)", value=0)
-
-            calculate_btn = gr.Button("Calculate Solar System")
-
-        with gr.Column():
-
-            output = gr.Markdown()
-
-    calculate_btn.click(
+    calculate_button.click(
         fn=solar_calculator,
         inputs=[
-            led_qty, led_hours,
-            fan_qty, fan_hours,
-            tv_qty, tv_hours,
-            fridge_qty, fridge_hours,
-            laptop_qty, laptop_hours
+            appliance,
+            quantity,
+            hours
         ],
         outputs=output
     )

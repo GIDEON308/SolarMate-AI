@@ -1,16 +1,22 @@
 APPLIANCES = {
-    # Lighting
     "LED Bulb": 9,
-
-    # Cooling
+    "CFL Bulb": 20,
     "Standing Fan": 70,
-
-    # Entertainment
-    'LED TV 32"': 60,
-
-    # Kitchen
+    "Ceiling Fan": 75,
+    '32" LED TV': 60,
+    '43" LED TV': 90,
     "Refrigerator": 150,
-
-    # Office
-    "Laptop": 65
+    "Deep Freezer": 250,
+    "Laptop": 65,
+    "Desktop Computer": 250,
+    "Air Conditioner (1 HP)": 900,
+    "Air Conditioner (1.5 HP)": 1200,
+    "Air Conditioner (2 HP)": 1800,
+    "Microwave": 1200,
+    "Electric Kettle": 2000,
+    "Water Heater": 2500,
+    "Water Pump (1 HP)": 750,
+    "Washing Machine": 500,
+    "Electric Iron": 1000,
+    "Rice Cooker": 700
 }
