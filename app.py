@@ -69,11 +69,13 @@ with gr.Blocks(title="SolarMate AI Version 4") as demo:
         value=5
     )
 
+    with gr.Row():
+        add_btn = gr.Button("➕ Add Appliance")
+        calculate_btn = gr.Button("☀️ Calculate Solar System")
+
     output = gr.Markdown()
 
-    calculate_button = gr.Button("Calculate Solar System")
-
-    calculate_button.click(
+    calculate_btn.click(
         fn=solar_calculator,
         inputs=[
             appliance,
