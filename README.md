@@ -1,25 +1,32 @@
 # ☀️ SolarMate AI
 
-SolarMate AI is an offline AI assistant designed to help solar PV technicians, engineers, students, and installers size solar power systems quickly and accurately.
+SolarMate AI is an offline AI assistant designed to help Solar PV technicians, engineers, students, and installers design solar power systems quickly and accurately.
 
-The project is being developed for the **Africa Deep Tech Challenge 2026** and aims to become a professional offline solar design and fault diagnosis assistant.
-
----
-
-## 🚀 Current Features
-
-* ✅ Solar PV sizing calculator
-* ✅ Battery capacity calculation
-* ✅ Inverter sizing
-* ✅ Dynamic appliance selector
-* ✅ Appliance power database
-* ✅ Gradio web interface
-* ✅ Open-source Python project
-* 🚧 Professional multi-appliance load builder (in progress)
+The project is being developed for the **Africa Deep Tech Challenge 2026** and aims to become a professional offline solar design, quotation, and fault diagnosis assistant.
 
 ---
 
-## 🛠️ Built With
+# 🚀 Current Features
+
+✅ Solar PV System Sizing
+
+✅ Battery Capacity Calculation
+
+✅ Inverter Sizing
+
+✅ Dynamic Appliance Selector
+
+✅ Multi-Appliance Load Builder
+
+✅ Equipment Recommendation System
+
+✅ Professional Gradio User Interface
+
+✅ Modular Python Project Structure
+
+---
+
+# 🛠️ Built With
 
 * Python
 * Gradio
@@ -28,71 +35,73 @@ The project is being developed for the **Africa Deep Tech Challenge 2026** and a
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
 ```text
 SolarMate-AI/
 │
-├── app.py                # Main application
-├── calculator.py         # Solar sizing calculations
-├── appliances.py         # Appliance power database
+├── app.py
+├── appliances.py
+├── calculator.py
+├── equipment.py
+├── load_builder.py
 ├── README.md
 ├── requirements.txt
-├── .gitignore
-│
-├── ai/
-├── assets/
-├── data/
-├── docs/
-└── reports/
+└── .gitignore
 ```
 
 ---
 
-## 🗺️ Development Roadmap
+# 🗺️ Development Roadmap
 
-### ✅ Version 1
+## ✅ Version 1
 
-* Basic Solar Calculator
+Basic Solar Calculator
 
-### ✅ Version 2
+## ✅ Version 2
 
-* Appliance-Based Solar Calculator
+Appliance-Based Solar Calculator
 
-### ✅ Version 3
+## ✅ Version 3
 
-* Improved User Interface
+Improved User Interface
 
-### ✅ Version 4
+## ✅ Version 4
 
-* Dynamic Appliance Selector
+Dynamic Appliance Selector
 
-### 🚧 Version 5 (Current Development)
+## ✅ Version 5
 
-* Multi-appliance load builder
-* Load schedule table
-* Automatic total energy calculation
-* Professional solar system sizing
+Professional Load Builder
 
-### 🔮 Future Versions
+## ✅ Version 6
 
-* AI Fault Diagnosis
-* Offline Solar Knowledge Base
-* PDF Report Generator
+Equipment Recommendation System
+
+## 🚧 Version 7 (Next)
+
+Equipment Cost Estimator
+
+## 🔮 Future Versions
+
 * Solar Quotation Generator
-* Installation Checklist
+* PDF Report Generator
 * Battery Bank Configuration
 * Charge Controller Sizing
+* AI Fault Diagnosis
+* Offline Solar Knowledge Base
+* Installation Checklist
+* Cloud Deployment
 
 ---
 
-## 🎯 Project Goal
+# 🎯 Project Goal
 
-To build Africa's leading offline AI assistant for Solar PV installation, maintenance, troubleshooting, and system design.
+To build Africa's leading offline AI assistant for Solar PV installation, maintenance, troubleshooting, system design, and quotation.
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 **Gideon Akinmadeyan**
 
@@ -100,4 +109,4 @@ GitHub: https://github.com/GIDEON308
 
 ---
 
-⭐ If you like this project, consider giving it a star on GitHub.
+⭐ If you like this project, please give it a star on GitHub.
