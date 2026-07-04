@@ -2,6 +2,11 @@ import gradio as gr
 
 from appliances import APPLIANCES
 from calculator import calculate_system
+from equipment import (
+    recommend_panel,
+    recommend_battery,
+    recommend_inverter
+)
 
 from load_builder import (
     add_appliance,
@@ -55,9 +60,12 @@ def calculate_total_system():
         24,
         1
     )
+    panel = recommend_panel(result["panel"])
+    battery = recommend_battery(result["battery"])
+    inverter = recommend_inverter(result["inverter"])
 
     return f"""
-# ☀️ SolarMate AI Version 5
+# ☀️ SolarMate AI Version 6
 
 ## Total Daily Energy
 
@@ -65,13 +73,18 @@ def calculate_total_system():
 
 ---
 
-## Recommended Solar System
+## Recommended Solar Equipment
+☀️ Solar Panels
 
-☀️ Solar Panel: **{result['panel']} W**
+**{panel}**
 
-🔋 Battery: **{result['battery']} Ah**
+🔋 Battery Bank
 
-⚡ Inverter: **{result['inverter']} W**
+**{battery}**
+
+⚡ Inverter
+
+**{inverter}**
 """
 
 
@@ -82,7 +95,7 @@ def clear_schedule():
     return "# 📋 Load Schedule Cleared."
 
 
-with gr.Blocks(title="SolarMate AI Version 5") as demo:
+with gr.Blocks(title="SolarMate AI Version 6") as demo:
 
     gr.Markdown("# ☀️ SolarMate AI")
     gr.Markdown("## Professional Load Builder")
