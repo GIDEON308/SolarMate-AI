@@ -8,6 +8,7 @@ from equipment import (
     recommend_inverter
 )
 from pricing import estimate_cost
+from quotation import generate_quote
 
 from load_builder import (
     add_appliance,
@@ -18,6 +19,8 @@ from load_builder import (
 
 
 def add_to_schedule(appliance, quantity, hours):
+
+
 
     power = APPLIANCES[appliance]
 
@@ -41,6 +44,8 @@ def add_to_schedule(appliance, quantity, hours):
             item["energy"]
         ])
 
+    
+
     return table_data
 
 
@@ -57,7 +62,6 @@ def calculate_total_system():
         24,
         1
     )
-
     panel = recommend_panel(result["panel"])
     battery = recommend_battery(result["battery"])
     inverter = recommend_inverter(result["inverter"])
@@ -70,14 +74,13 @@ def calculate_total_system():
     total_cost = cost["total"]
 
     return f"""
-# ☀️ SolarMate AI Version 8
+# ☀️ SolarMate AI Version 7
 
 ## Total Daily Energy
 
 **{daily_energy:.0f} Wh/day**
 
 ---
-
 ## Recommended Solar Equipment
 
 ☀️ Solar Panels
@@ -117,10 +120,10 @@ def clear_schedule():
     return "# 📋 Load Schedule Cleared."
 
 
-with gr.Blocks(title="SolarMate AI Version 8") as demo:
+with gr.Blocks(title="SolarMate AI Version 7") as demo:
 
     gr.Markdown("# ☀️ SolarMate AI")
-    gr.Markdown("## Professional Load Builder & Cost Estimator")
+    gr.Markdown("## Professional Load Builder")
 
     customer = gr.Textbox(
         label="Customer Name",
@@ -143,26 +146,18 @@ with gr.Blocks(title="SolarMate AI Version 8") as demo:
         value=5
     )
 
-    with gr.Row():
-        add_btn = gr.Button("➕ Add Appliance")
-        calculate_btn = gr.Button("☀️ Calculate System")
-        clear_btn = gr.Button("🗑️ Clear Schedule")
+    quantity = gr.Number(label="Quantity", value=1)
+    hours = gr.Number(label="Hours per Day", value=5)
+
+with gr.Row():
+    add_btn = gr.Button("➕ Add Appliance")
+    calculate_btn = gr.Button("☀️ Calculate System")
+    pdf_btn = gr.Button("📄 Generate PDF")
+    clear_btn = gr.Button("🗑️ Clear Schedule")
 
     schedule_table = gr.Dataframe(
-        headers=[
-            "Appliance",
-            "Power (W)",
-            "Quantity",
-            "Hours",
-            "Energy (Wh/day)"
-        ],
-        datatype=[
-            "str",
-            "number",
-            "number",
-            "number",
-            "number"
-        ],
+        headers=["Appliance", "Power (W)", "Quantity", "Hours", "Energy (Wh/day)"],
+        datatype=["str", "number", "number", "number", "number"],
         value=[],
         interactive=False
     )

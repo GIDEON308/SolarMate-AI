@@ -1,28 +1,24 @@
 # ☀️ SolarMate AI
 
-SolarMate AI is an offline AI assistant designed to help Solar PV technicians, engineers, students, and installers design solar power systems quickly and accurately.
+## Offline AI Assistant for Solar PV Design, Installation & Cost Estimation
 
-The project is being developed for the **Africa Deep Tech Challenge 2026** and aims to become a professional offline solar design, quotation, and fault diagnosis assistant.
+SolarMate AI is an intelligent offline assistant designed to help solar technicians, engineers, students, and installers quickly design solar power systems, estimate equipment requirements, and calculate project costs.
+
+The project is being developed for the **Africa Deep Tech Challenge 2026** with the vision of becoming Africa's leading offline AI assistant for Solar PV installation, maintenance, troubleshooting, and system design.
 
 ---
 
 # 🚀 Current Features
 
-✅ Solar PV System Sizing
-
-✅ Battery Capacity Calculation
-
-✅ Inverter Sizing
-
-✅ Dynamic Appliance Selector
-
-✅ Multi-Appliance Load Builder
-
-✅ Equipment Recommendation System
-
-✅ Professional Gradio User Interface
-
-✅ Modular Python Project Structure
+* ✅ Solar PV sizing calculator
+* ✅ Battery capacity calculation
+* ✅ Inverter sizing
+* ✅ Dynamic appliance selector
+* ✅ Multi-appliance load builder
+* ✅ Automatic daily energy calculation
+* ✅ Equipment recommendation system
+* ✅ Equipment cost estimation
+* ✅ Professional Gradio web interface
 
 ---
 
@@ -37,17 +33,24 @@ The project is being developed for the **Africa Deep Tech Challenge 2026** and a
 
 # 📂 Project Structure
 
-```text
+```
 SolarMate-AI/
 │
-├── app.py
-├── appliances.py
-├── calculator.py
-├── equipment.py
-├── load_builder.py
-├── README.md
+├── app.py                 # Main Gradio application
+├── calculator.py          # Solar sizing calculations
+├── appliances.py          # Appliance power database
+├── load_builder.py        # Multi-appliance load builder
+├── equipment.py           # Equipment recommendation engine
+├── pricing.py             # Equipment pricing database
 ├── requirements.txt
-└── .gitignore
+├── README.md
+├── .gitignore
+│
+├── ai/
+├── assets/
+├── data/
+├── docs/
+└── reports/
 ```
 
 ---
@@ -56,48 +59,58 @@ SolarMate-AI/
 
 ## ✅ Version 1
 
-Basic Solar Calculator
+* Basic Solar Calculator
 
 ## ✅ Version 2
 
-Appliance-Based Solar Calculator
+* Appliance-Based Solar Calculator
 
 ## ✅ Version 3
 
-Improved User Interface
+* Improved User Interface
 
 ## ✅ Version 4
 
-Dynamic Appliance Selector
+* Dynamic Appliance Selector
 
 ## ✅ Version 5
 
-Professional Load Builder
+* Professional Multi-Appliance Load Builder
 
 ## ✅ Version 6
 
-Equipment Recommendation System
+* Equipment Recommendation System
 
-## 🚧 Version 7 (Next)
+## ✅ Version 7
 
-Equipment Cost Estimator
+* Equipment Cost Estimator
 
-## 🔮 Future Versions
+## 🚧 Version 8 (Next)
 
-* Solar Quotation Generator
-* PDF Report Generator
-* Battery Bank Configuration
-* Charge Controller Sizing
-* AI Fault Diagnosis
+* Professional PDF Quotation Generator
+* Customer Information
+* Downloadable Project Report
+
+---
+
+# 🔮 Future Features
+
+* AI Solar Fault Diagnosis
 * Offline Solar Knowledge Base
+* Battery Backup Time Calculator
+* Charge Controller Sizing
+* Battery Bank Configuration
+* Solar Quotation Generator
 * Installation Checklist
-* Cloud Deployment
+* Financial Payback Analysis
+* Android Application
+* Offline AI Assistant
 
 ---
 
 # 🎯 Project Goal
 
-To build Africa's leading offline AI assistant for Solar PV installation, maintenance, troubleshooting, system design, and quotation.
+To build Africa's leading offline AI assistant for Solar PV system design, installation, maintenance, troubleshooting, and project estimation.
 
 ---
 
@@ -109,4 +122,9 @@ GitHub: https://github.com/GIDEON308
 
 ---
 
-⭐ If you like this project, please give it a star on GitHub.
+## ⭐ Support the Project
+
+If you like this project, please consider giving it a ⭐ on GitHub.
+
+Every star helps support the project's growth.
+
