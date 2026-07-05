@@ -7,6 +7,7 @@ from equipment import (
     recommend_battery,
     recommend_inverter
 )
+from pricing import estimate_cost
 
 from load_builder import (
     add_appliance,
@@ -64,27 +65,50 @@ def calculate_total_system():
     battery = recommend_battery(result["battery"])
     inverter = recommend_inverter(result["inverter"])
 
+    cost = estimate_cost(panel, battery, inverter)
+
+    panel_cost = cost["panel_cost"]
+    battery_cost = cost["battery_cost"]
+    inverter_cost = cost["inverter_cost"]
+    total_cost = cost["total"]
+
     return f"""
-# ☀️ SolarMate AI Version 6
+# ☀️ SolarMate AI Version 7
 
 ## Total Daily Energy
 
 **{daily_energy:.0f} Wh/day**
 
 ---
-
 ## Recommended Solar Equipment
+
 ☀️ Solar Panels
 
 **{panel}**
+
+Price: **₦{panel_cost:,}**
 
 🔋 Battery Bank
 
 **{battery}**
 
+Price: **₦{battery_cost:,}**
+
 ⚡ Inverter
 
 **{inverter}**
+
+Price: **₦{inverter_cost:,}**
+
+🔧 Installation Materials
+
+Price: **₦80,000**
+
+---
+
+# 💰 Estimated Project Cost
+
+## **₦{total_cost:,}**
 """
 
 
@@ -95,7 +119,7 @@ def clear_schedule():
     return "# 📋 Load Schedule Cleared."
 
 
-with gr.Blocks(title="SolarMate AI Version 6") as demo:
+with gr.Blocks(title="SolarMate AI Version 7") as demo:
 
     gr.Markdown("# ☀️ SolarMate AI")
     gr.Markdown("## Professional Load Builder")
